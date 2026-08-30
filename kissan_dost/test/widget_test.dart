@@ -4,8 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kissan_dost/app/app.dart';
 
 void main() {
-  testWidgets('App renders home screen', (WidgetTester tester) async {
+  testWidgets('App renders welcome screen with app name',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const ProviderScope(child: App()));
-    expect(find.text('Kissan Dost'), findsWidgets);
+    await tester.pumpAndSettle();
+    expect(find.text('Kisan Dost'), findsWidgets);
   });
 }
