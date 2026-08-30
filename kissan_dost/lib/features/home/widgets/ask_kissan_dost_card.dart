@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import '../../../app/theme/app_colors.dart';
 import '../../../app/theme/app_text_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class AskKissanDostCard extends StatelessWidget {
-  const AskKissanDostCard({super.key});
+  const AskKissanDostCard({super.key, this.onTap});
+
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Material(
       color: AppColors.primary,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -36,14 +41,14 @@ class AskKissanDostCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'کسان دوست سے پوچھیں',
+                      l10n.askKisanDost,
                       style: AppTextStyles.title.copyWith(
                         color: AppColors.textOnPrimary,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'بول کر یا لکھ کر سوال کریں',
+                      l10n.askKisanDostSubtitle,
                       style: AppTextStyles.body.copyWith(
                         color: AppColors.textOnPrimary.withValues(alpha: 0.85),
                       ),
