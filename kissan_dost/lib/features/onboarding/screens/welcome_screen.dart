@@ -13,59 +13,65 @@ class WelcomeScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            children: [
-              const Spacer(flex: 2),
-              Container(
-                width: 160,
-                height: 160,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryLight.withValues(alpha: 0.15),
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.nature_people,
-                  size: 80,
-                  color: AppColors.primary,
-                ),
-              ),
-              const SizedBox(height: 32),
-              Text(
-                l10n.appName,
-                style: AppTextStyles.headline.copyWith(
-                  color: AppColors.primary,
-                  fontSize: 32,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                l10n.welcomeTitle,
-                style: AppTextStyles.title,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                l10n.welcomeSubtitle,
-                style: AppTextStyles.bodySecondary,
-                textAlign: TextAlign.center,
-              ),
-              const Spacer(flex: 3),
-              SizedBox(
-                width: double.infinity,
-                child: AppButton(
-                  label: l10n.continueButton,
-                  onPressed: () => Navigator.pushNamed(
-                    context,
-                    AppRouter.language,
-                  ),
-                ),
-              ),
-            ],
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/images/farmer_splash_bg.png',
+            fit: BoxFit.cover,
           ),
-        ),
+          Container(
+            color: Colors.black.withValues(alpha: 0.45),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.black.withValues(alpha: 0.1),
+                  Colors.black.withValues(alpha: 0.65),
+                ],
+              ),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                children: [
+                  const Spacer(),
+                  Text(
+                    l10n.appName,
+                    style: AppTextStyles.display.copyWith(
+                      color: AppColors.textOnPrimary,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withValues(alpha: 0.4),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 32),
+                  SizedBox(
+                    width: double.infinity,
+                    child: AppButton(
+                      label: l10n.getStartedButton,
+                      onPressed: () => Navigator.pushNamed(
+                        context,
+                        AppRouter.language,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

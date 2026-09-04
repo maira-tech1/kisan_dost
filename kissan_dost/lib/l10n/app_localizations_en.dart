@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueButton => 'Continue';
 
   @override
+  String get getStartedButton => 'Get Started';
+
+  @override
   String get nextButton => 'Next';
 
   @override
@@ -33,7 +36,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get finishButton => 'Finish';
 
   @override
+  String get cancelButton => 'Cancel';
+
+  @override
   String get selectLanguage => 'Choose your preferred language';
+
+  @override
+  String get selectLanguageSubtitle =>
+      'Select your language / اپنی زبان منتخب کریں';
 
   @override
   String get english => 'English';
@@ -48,7 +58,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get farmerNameLabel => 'Your name';
 
   @override
-  String get farmerLocationLabel => 'Your location';
+  String get farmerLocationLabel => 'Your city';
 
   @override
   String get farmerNameHint => 'Enter your name';
@@ -57,13 +67,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get farmerLocationHint => 'Enter your village or city';
 
   @override
-  String get cropSelectionTitle => 'Select your crops';
+  String get cropSelectionTitle => 'Choose Your Crops';
 
   @override
-  String get cropSelectionSubtitle => 'Choose all the crops you grow';
+  String get cropSelectionSubtitle => 'Select the crops you grow';
 
   @override
-  String get homeGreeting => 'Assalamu Alaikum!';
+  String get homeGreeting => 'Good morning!';
+
+  @override
+  String homeGreetingName(String name) {
+    return 'Good morning, $name';
+  }
 
   @override
   String get homePrompt => 'How can we help you today?';
@@ -76,6 +91,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get weatherWind => 'Wind';
+
+  @override
+  String get weatherRain => 'Rain';
+
+  @override
+  String get weather7DayForecast => '7-day forecast';
+
+  @override
+  String get weatherToday => 'Today';
 
   @override
   String get cropsTitle => 'My Crops';
@@ -93,19 +117,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get askKisanDost => 'Ask Kisan Dost';
 
   @override
-  String get askKisanDostSubtitle => 'Speak or type your question';
+  String get askKisanDostSubtitle => 'Tap to speak';
 
   @override
-  String get voiceAssistantTitle => 'Voice Assistant';
+  String get voiceAssistantTitle => 'Ask Kisan Dost';
 
   @override
-  String get voiceAssistantReady => 'Ready to listen';
+  String get voiceAssistantReady => 'Listening...';
 
   @override
-  String get tapToSpeak => 'Tap the microphone to speak';
+  String get tapToSpeak => 'What would you like to ask?';
 
   @override
   String get listening => 'Listening...';
+
+  @override
+  String get bottomNavHome => 'Home';
+
+  @override
+  String get bottomNavWeather => 'Weather';
+
+  @override
+  String get bottomNavAssistant => 'Assistant';
 
   @override
   String get cropWheat => 'Wheat';

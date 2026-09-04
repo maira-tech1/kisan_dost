@@ -28,7 +28,7 @@ class App extends ConsumerWidget {
         Locale('en'),
         Locale('ur'),
       ],
-      initialRoute: AppRouter.welcome,
+      initialRoute: AppRouter.splash,
       routes: AppRouter.routes,
     );
   }

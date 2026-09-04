@@ -37,33 +37,39 @@ class _LanguageSelectionScreenState
     final l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.selectLanguage)),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              const SizedBox(height: 24),
               Text(
                 l10n.selectLanguage,
                 style: AppTextStyles.headline,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 12),
+              Text(
+                l10n.selectLanguageSubtitle,
+                style: AppTextStyles.bodySecondary.copyWith(
+                  fontSize: 13,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 48),
               _LanguageCard(
                 key: const Key('language-card-en'),
-                code: 'en',
+                code: 'EN',
                 label: l10n.english,
-                nativeLabel: 'English',
                 isSelected: _selected == 'en',
                 onTap: () => _selectLanguage('en'),
               ),
               const SizedBox(height: 16),
               _LanguageCard(
                 key: const Key('language-card-ur'),
-                code: 'ur',
+                code: 'UR',
                 label: l10n.urdu,
-                nativeLabel: 'اردو',
                 isSelected: _selected == 'ur',
                 onTap: () => _selectLanguage('ur'),
               ),
@@ -85,50 +91,44 @@ class _LanguageCard extends StatelessWidget {
     super.key,
     required this.code,
     required this.label,
-    required this.nativeLabel,
     required this.isSelected,
     required this.onTap,
   });
 
   final String code;
   final String label;
-  final String nativeLabel;
   final bool isSelected;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: isSelected
-          ? AppColors.primary.withValues(alpha: 0.1)
-          : AppColors.surface,
-      borderRadius: BorderRadius.circular(16),
+      color: isSelected ? AppColors.primarySoft : AppColors.surface,
+      borderRadius: BorderRadius.circular(20),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: isSelected ? AppColors.primary : AppColors.divider,
+              color: isSelected ? AppColors.primary : AppColors.border,
               width: isSelected ? 2 : 1,
             ),
           ),
           child: Row(
             children: [
               Container(
-                width: 48,
-                height: 48,
+                width: 52,
+                height: 52,
                 decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.primary
-                      : AppColors.primaryLight.withValues(alpha: 0.15),
+                  color: isSelected ? AppColors.primary : AppColors.primarySoft,
                   shape: BoxShape.circle,
                 ),
                 child: Center(
                   child: Text(
-                    code.toUpperCase(),
+                    code,
                     style: AppTextStyles.button.copyWith(
                       color: isSelected
                           ? AppColors.textOnPrimary
@@ -139,20 +139,27 @@ class _LanguageCard extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(label, style: AppTextStyles.title),
-                    const SizedBox(height: 4),
-                    Text(
-                      nativeLabel,
-                      style: AppTextStyles.bodySecondary,
-                    ),
-                  ],
+                child: Text(
+                  label,
+                  style: AppTextStyles.title.copyWith(
+                    color: isSelected
+                        ? AppColors.primaryDark
+                        : AppColors.textPrimary,
+                  ),
                 ),
               ),
               if (isSelected)
-                const Icon(Icons.check_circle, color: AppColors.primary),
+                const Icon(
+                  Icons.check_circle,
+                  color: AppColors.primary,
+                  size: 28,
+                )
+              else
+                Icon(
+                  Icons.circle_outlined,
+                  color: AppColors.textSecondary.withValues(alpha: 0.35),
+                  size: 28,
+                ),
             ],
           ),
         ),

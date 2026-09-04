@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 abstract class AppTextStyles {
+  static const TextStyle display = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w800,
+    color: AppColors.textPrimary,
+    letterSpacing: -0.5,
+  );
+
   static const TextStyle headline = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
@@ -34,6 +41,11 @@ abstract class AppTextStyles {
 
   static const TextStyle button = TextStyle(
     fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle largeButton = TextStyle(
+    fontSize: 18,
     fontWeight: FontWeight.w600,
   );
 }

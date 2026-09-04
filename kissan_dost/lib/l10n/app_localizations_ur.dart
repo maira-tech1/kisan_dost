@@ -21,6 +21,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get continueButton => 'جاری رکھیں';
 
   @override
+  String get getStartedButton => 'شروع کریں';
+
+  @override
   String get nextButton => 'آگے';
 
   @override
@@ -33,7 +36,14 @@ class AppLocalizationsUr extends AppLocalizations {
   String get finishButton => 'ختم کریں';
 
   @override
+  String get cancelButton => 'منسوخ کریں';
+
+  @override
   String get selectLanguage => 'اپنی پسندیدہ زبان منتخب کریں';
+
+  @override
+  String get selectLanguageSubtitle =>
+      'Select your language / اپنی زبان منتخب کریں';
 
   @override
   String get english => 'English';
@@ -48,7 +58,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get farmerNameLabel => 'آپ کا نام';
 
   @override
-  String get farmerLocationLabel => 'آپ کا مقام';
+  String get farmerLocationLabel => 'آپ کا شہر';
 
   @override
   String get farmerNameHint => 'اپنا نام درج کریں';
@@ -60,11 +70,15 @@ class AppLocalizationsUr extends AppLocalizations {
   String get cropSelectionTitle => 'اپنی فصلیں منتخب کریں';
 
   @override
-  String get cropSelectionSubtitle =>
-      'وہ تمام فصلیں منتخب کریں جو آپ اگاتے ہیں';
+  String get cropSelectionSubtitle => 'وہ فصلیں منتخب کریں جو آپ اگاتے ہیں';
 
   @override
   String get homeGreeting => 'السلام علیکم!';
+
+  @override
+  String homeGreetingName(String name) {
+    return 'السلام علیکم، $name!';
+  }
 
   @override
   String get homePrompt => 'آج ہم آپ کی کیا مدد کر سکتے ہیں؟';
@@ -77,6 +91,15 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get weatherWind => 'ہوا';
+
+  @override
+  String get weatherRain => 'بارش';
+
+  @override
+  String get weather7DayForecast => '7 دن کی پیشن گوئی';
+
+  @override
+  String get weatherToday => 'آج';
 
   @override
   String get cropsTitle => 'میری فصلیں';
@@ -94,19 +117,28 @@ class AppLocalizationsUr extends AppLocalizations {
   String get askKisanDost => 'کسان دوست سے پوچھیں';
 
   @override
-  String get askKisanDostSubtitle => 'بول کر یا لکھ کر سوال کریں';
+  String get askKisanDostSubtitle => 'بولنے کے لیے دبائیں';
 
   @override
-  String get voiceAssistantTitle => 'آواز مددگار';
+  String get voiceAssistantTitle => 'کسان دوست سے پوچھیں';
 
   @override
-  String get voiceAssistantReady => ' سننے کے لیے تیار';
+  String get voiceAssistantReady => 'سن رہا ہے...';
 
   @override
-  String get tapToSpeak => 'بولنے کے لیے مائکروفون دبائیں';
+  String get tapToSpeak => 'آپ کیا پوچھنا چاہیں گے؟';
 
   @override
   String get listening => 'سن رہا ہے...';
+
+  @override
+  String get bottomNavHome => 'ہوم';
+
+  @override
+  String get bottomNavWeather => 'موسم';
+
+  @override
+  String get bottomNavAssistant => 'مددگار';
 
   @override
   String get cropWheat => 'گندم';

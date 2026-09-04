@@ -44,7 +44,14 @@ class _FarmerDetailsScreenState extends ConsumerState<FarmerDetailsScreen> {
           location: location,
         );
 
-    Navigator.pushNamed(context, AppRouter.cropSelection);
+    final args = ModalRoute.of(context)?.settings.arguments;
+    final isEditing = args is Map && args['isEditing'] == true;
+
+    if (isEditing) {
+      Navigator.pop(context);
+    } else {
+      Navigator.pushNamed(context, AppRouter.cropSelection);
+    }
   }
 
   @override
@@ -52,18 +59,23 @@ class _FarmerDetailsScreenState extends ConsumerState<FarmerDetailsScreen> {
     final l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.farmerDetailsTitle)),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              const SizedBox(height: 24),
               Text(
                 l10n.farmerDetailsTitle,
                 style: AppTextStyles.headline,
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 8),
+              Text(
+                l10n.farmerNameHint,
+                style: AppTextStyles.bodySecondary,
+              ),
+              const SizedBox(height: 40),
               TextField(
                 controller: _nameController,
                 textCapitalization: TextCapitalization.words,
@@ -73,7 +85,7 @@ class _FarmerDetailsScreenState extends ConsumerState<FarmerDetailsScreen> {
                   prefixIcon: const Icon(Icons.person_outline),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               TextField(
                 controller: _locationController,
                 textCapitalization: TextCapitalization.words,

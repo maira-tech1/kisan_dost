@@ -5,6 +5,7 @@ import '../../../app/theme/app_text_styles.dart';
 import '../../../core/widgets/app_card.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../farmer/extensions/crop_localization.dart';
+import '../../farmer/models/crop_option.dart';
 import '../../farmer/providers/farmer_provider.dart';
 
 class CropCard extends ConsumerWidget {
@@ -25,19 +26,36 @@ class CropCard extends ConsumerWidget {
         children: [
           Row(
             children: [
-              const Icon(Icons.grain, color: AppColors.primary, size: 24),
-              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: AppColors.primarySoft,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.grain,
+                  color: AppColors.primary,
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: 12),
               Expanded(
-                  child: Text(l10n.cropsTitle, style: AppTextStyles.title)),
+                child: Text(l10n.cropsTitle, style: AppTextStyles.title),
+              ),
               if (onEdit != null)
-                IconButton(
-                  icon: const Icon(Icons.edit, color: AppColors.primary),
-                  tooltip: l10n.editCrops,
-                  onPressed: onEdit,
+                GestureDetector(
+                  onTap: onEdit,
+                  child: Text(
+                    l10n.editCrops,
+                    style: AppTextStyles.body.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 16),
           if (cropIds.isEmpty)
             Text(
               l10n.addCrop,
@@ -45,27 +63,39 @@ class CropCard extends ConsumerWidget {
             )
           else
             Wrap(
-              spacing: 8,
-              runSpacing: 8,
+              spacing: 10,
+              runSpacing: 10,
               children: cropIds
-                  .map(
-                    (cropId) => Chip(
-                      avatar: Icon(
-                        Icons.spa,
-                        size: 18,
-                        color: AppColors.primary,
-                      ),
-                      label: Text(localizeCropName(context, cropId)),
-                      backgroundColor: AppColors.primaryLight.withValues(
-                        alpha: 0.15,
-                      ),
-                      side: BorderSide.none,
-                    ),
-                  )
+                  .map((cropId) => _CropChip(cropId: cropId))
                   .toList(),
             ),
         ],
       ),
+    );
+  }
+}
+
+class _CropChip extends StatelessWidget {
+  const _CropChip({required this.cropId});
+
+  final String cropId;
+
+  @override
+  Widget build(BuildContext context) {
+    final crop = availableCrops.firstWhere(
+      (c) => c.id == cropId,
+      orElse: () => const CropOption(id: '', icon: Icons.spa),
+    );
+
+    return Chip(
+      avatar: Icon(
+        crop.icon,
+        size: 18,
+        color: AppColors.primary,
+      ),
+      label: Text(localizeCropName(context, cropId)),
+      backgroundColor: AppColors.primarySoft,
+      side: BorderSide.none,
     );
   }
 }

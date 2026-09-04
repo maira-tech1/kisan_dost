@@ -14,10 +14,10 @@ class AskKissanDostCard extends StatelessWidget {
 
     return Material(
       color: AppColors.primary,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(20),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Row(
@@ -32,7 +32,7 @@ class AskKissanDostCard extends StatelessWidget {
                 child: const Icon(
                   Icons.mic,
                   color: AppColors.textOnPrimary,
-                  size: 32,
+                  size: 30,
                 ),
               ),
               const SizedBox(width: 16),
@@ -56,7 +56,11 @@ class AskKissanDostCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(Icons.arrow_forward, color: AppColors.textOnPrimary),
+              const Icon(
+                Icons.arrow_forward_ios,
+                color: AppColors.textOnPrimary,
+                size: 18,
+              ),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../app/router.dart';
 import '../../../app/theme/app_colors.dart';
 import '../../../app/theme/app_text_styles.dart';
 import '../../../core/widgets/app_card.dart';
@@ -11,6 +12,7 @@ class WeatherCard extends StatelessWidget {
     required this.humidity,
     required this.windSpeed,
     required this.location,
+    this.rainChance = 30,
     super.key,
   });
 
@@ -18,6 +20,7 @@ class WeatherCard extends StatelessWidget {
   final String condition;
   final int humidity;
   final int windSpeed;
+  final int rainChance;
   final String location;
 
   @override
@@ -25,22 +28,54 @@ class WeatherCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
 
     return AppCard(
+      onTap: () => Navigator.pushNamed(context, AppRouter.weather),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              const Icon(Icons.wb_sunny, color: AppColors.accent, size: 24),
-              const SizedBox(width: 8),
-              Text(l10n.weatherTitle, style: AppTextStyles.title),
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: AppColors.primarySoft,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.wb_sunny,
+                  color: AppColors.accent,
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(l10n.weatherTitle, style: AppTextStyles.title),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    l10n.weatherToday,
+                    style: AppTextStyles.caption.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(width: 2),
+                  const Icon(
+                    Icons.chevron_right,
+                    color: AppColors.primary,
+                    size: 20,
+                  ),
+                ],
+              ),
             ],
           ),
           const SizedBox(height: 16),
           Row(
             children: [
               Container(
-                width: 56,
-                height: 56,
+                width: 64,
+                height: 64,
                 decoration: BoxDecoration(
                   color: AppColors.accent.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
@@ -48,7 +83,7 @@ class WeatherCard extends StatelessWidget {
                 child: const Icon(
                   Icons.wb_sunny,
                   color: AppColors.accent,
-                  size: 32,
+                  size: 36,
                 ),
               ),
               const SizedBox(width: 16),
@@ -56,30 +91,53 @@ class WeatherCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('$temperature°C', style: AppTextStyles.headline),
-                    Text(condition, style: AppTextStyles.body),
-                    const SizedBox(height: 2),
-                    Text(location, style: AppTextStyles.caption),
+                    Text(
+                      '$temperature°C',
+                      style: AppTextStyles.display.copyWith(fontSize: 28),
+                    ),
+                    Text(
+                      condition,
+                      style: AppTextStyles.body,
+                    ),
+                    if (location.trim().isNotEmpty)
+                      Text(
+                        location,
+                        style: AppTextStyles.caption,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                   ],
                 ),
               ),
             ],
           ),
           const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _WeatherDetail(
-                icon: Icons.water_drop_outlined,
-                label: l10n.weatherHumidity,
-                value: '$humidity%',
-              ),
-              _WeatherDetail(
-                icon: Icons.air,
-                label: l10n.weatherWind,
-                value: '$windSpeed km/h',
-              ),
-            ],
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: AppColors.background,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _WeatherDetail(
+                  icon: Icons.water_drop_outlined,
+                  label: l10n.weatherHumidity,
+                  value: '$humidity%',
+                ),
+                _WeatherDetail(
+                  icon: Icons.air,
+                  label: l10n.weatherWind,
+                  value: '$windSpeed km/h',
+                ),
+                _WeatherDetail(
+                  icon: Icons.umbrella_outlined,
+                  label: l10n.weatherRain,
+                  value: '$rainChance%',
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -102,13 +160,18 @@ class _WeatherDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, size: 18, color: AppColors.primary),
+        Icon(icon, size: 20, color: AppColors.primary),
         const SizedBox(width: 6),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(label, style: AppTextStyles.caption),
-            Text(value, style: AppTextStyles.body),
+            Text(
+              value,
+              style: AppTextStyles.body.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
       ],

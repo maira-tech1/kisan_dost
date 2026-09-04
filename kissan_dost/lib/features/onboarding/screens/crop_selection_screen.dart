@@ -21,13 +21,13 @@ class CropSelectionScreen extends ConsumerWidget {
     final hasSelection = selectedIds.isNotEmpty;
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.cropSelectionTitle)),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              const SizedBox(height: 24),
               Text(
                 l10n.cropSelectionTitle,
                 style: AppTextStyles.headline,
@@ -42,9 +42,9 @@ class CropSelectionScreen extends ConsumerWidget {
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
-                    childAspectRatio: 1.1,
+                    mainAxisSpacing: 14,
+                    crossAxisSpacing: 14,
+                    childAspectRatio: 0.95,
                   ),
                   itemCount: availableCrops.length,
                   itemBuilder: (context, index) {
@@ -94,45 +94,54 @@ class _CropToggleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: isSelected
-          ? AppColors.primary.withValues(alpha: 0.1)
-          : AppColors.surface,
-      borderRadius: BorderRadius.circular(16),
+      color: isSelected ? AppColors.primarySoft : AppColors.surface,
+      borderRadius: BorderRadius.circular(20),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: isSelected ? AppColors.primary : AppColors.divider,
+              color: isSelected ? AppColors.primary : AppColors.border,
               width: isSelected ? 2 : 1,
             ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                crop.icon,
-                size: 40,
-                color: isSelected ? AppColors.primary : AppColors.textSecondary,
+              Container(
+                width: 64,
+                height: 64,
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? AppColors.primary
+                      : AppColors.primarySoft,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  crop.icon,
+                  size: 32,
+                  color: isSelected
+                      ? AppColors.textOnPrimary
+                      : AppColors.primary,
+                ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
               Text(
                 label,
                 style: AppTextStyles.title.copyWith(
-                  color: isSelected ? AppColors.primary : AppColors.textPrimary,
+                  color:
+                      isSelected ? AppColors.primaryDark : AppColors.textPrimary,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 8),
-              if (isSelected)
-                const Icon(Icons.check_circle, color: AppColors.primary)
-              else
-                const Icon(
-                  Icons.circle_outlined,
-                  color: AppColors.divider,
-                ),
+              const SizedBox(height: 12),
+              Icon(
+                isSelected ? Icons.check_circle : Icons.circle_outlined,
+                color: isSelected ? AppColors.primary : AppColors.border,
+                size: 24,
+              ),
             ],
           ),
         ),

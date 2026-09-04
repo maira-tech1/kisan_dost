@@ -12,21 +12,28 @@ class FarmerHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final name = ref.watch(farmerProvider.select((farmer) => farmer.name));
+    final location = ref.watch(
+      farmerProvider.select((farmer) => farmer.location),
+    );
     final l10n = AppLocalizations.of(context);
 
     return Container(
       width: double.infinity,
       padding: EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top + 16,
-        bottom: 24,
-        left: 16,
-        right: 16,
+        top: MediaQuery.of(context).padding.top + 32,
+        bottom: 40,
+        left: 20,
+        right: 20,
       ),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [AppColors.primaryDark, AppColors.primary],
+        ),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(28),
+          bottomRight: Radius.circular(28),
         ),
       ),
       child: Column(
@@ -35,17 +42,49 @@ class FarmerHeader extends ConsumerWidget {
           Row(
             children: [
               const CircleAvatar(
-                radius: 28,
+                radius: 26,
                 backgroundColor: AppColors.textOnPrimary,
-                child: Icon(Icons.person, size: 32, color: AppColors.primary),
+                child: Icon(Icons.person, size: 28, color: AppColors.primary),
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: Text(
-                  name,
-                  style: AppTextStyles.title.copyWith(
-                    color: AppColors.textOnPrimary,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name.trim().isEmpty
+                          ? l10n.homeGreeting
+                          : l10n.homeGreetingName(name),
+                      style: AppTextStyles.title.copyWith(
+                        color: AppColors.textOnPrimary,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    if (location.trim().isNotEmpty)
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.location_on,
+                            size: 14,
+                            color: AppColors.primaryLight,
+                          ),
+                          const SizedBox(width: 4),
+                          Flexible(
+                            child: Text(
+                              location,
+                              style: AppTextStyles.body.copyWith(
+                                color: AppColors.textOnPrimary
+                                    .withValues(alpha: 0.85),
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                  ],
                 ),
               ),
               IconButton(
@@ -57,23 +96,10 @@ class FarmerHeader extends ConsumerWidget {
                 onPressed: () => Navigator.pushNamed(
                   context,
                   AppRouter.farmerDetails,
+                  arguments: const {'isEditing': true},
                 ),
               ),
             ],
-          ),
-          const SizedBox(height: 16),
-          Text(
-            l10n.homeGreeting,
-            style: AppTextStyles.headline.copyWith(
-              color: AppColors.textOnPrimary,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            l10n.homePrompt,
-            style: AppTextStyles.body.copyWith(
-              color: AppColors.textOnPrimary.withValues(alpha: 0.9),
-            ),
           ),
         ],
       ),

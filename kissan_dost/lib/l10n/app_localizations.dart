@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// **'Continue'**
   String get continueButton;
 
+  /// No description provided for @getStartedButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Started'**
+  String get getStartedButton;
+
   /// No description provided for @nextButton.
   ///
   /// In en, this message translates to:
@@ -146,11 +152,23 @@ abstract class AppLocalizations {
   /// **'Finish'**
   String get finishButton;
 
+  /// No description provided for @cancelButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelButton;
+
   /// No description provided for @selectLanguage.
   ///
   /// In en, this message translates to:
   /// **'Choose your preferred language'**
   String get selectLanguage;
+
+  /// No description provided for @selectLanguageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your language / اپنی زبان منتخب کریں'**
+  String get selectLanguageSubtitle;
 
   /// No description provided for @english.
   ///
@@ -179,7 +197,7 @@ abstract class AppLocalizations {
   /// No description provided for @farmerLocationLabel.
   ///
   /// In en, this message translates to:
-  /// **'Your location'**
+  /// **'Your city'**
   String get farmerLocationLabel;
 
   /// No description provided for @farmerNameHint.
@@ -197,20 +215,26 @@ abstract class AppLocalizations {
   /// No description provided for @cropSelectionTitle.
   ///
   /// In en, this message translates to:
-  /// **'Select your crops'**
+  /// **'Choose Your Crops'**
   String get cropSelectionTitle;
 
   /// No description provided for @cropSelectionSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Choose all the crops you grow'**
+  /// **'Select the crops you grow'**
   String get cropSelectionSubtitle;
 
   /// No description provided for @homeGreeting.
   ///
   /// In en, this message translates to:
-  /// **'Assalamu Alaikum!'**
+  /// **'Good morning!'**
   String get homeGreeting;
+
+  /// No description provided for @homeGreetingName.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning, {name}'**
+  String homeGreetingName(String name);
 
   /// No description provided for @homePrompt.
   ///
@@ -235,6 +259,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Wind'**
   String get weatherWind;
+
+  /// No description provided for @weatherRain.
+  ///
+  /// In en, this message translates to:
+  /// **'Rain'**
+  String get weatherRain;
+
+  /// No description provided for @weather7DayForecast.
+  ///
+  /// In en, this message translates to:
+  /// **'7-day forecast'**
+  String get weather7DayForecast;
+
+  /// No description provided for @weatherToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get weatherToday;
 
   /// No description provided for @cropsTitle.
   ///
@@ -269,25 +311,25 @@ abstract class AppLocalizations {
   /// No description provided for @askKisanDostSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Speak or type your question'**
+  /// **'Tap to speak'**
   String get askKisanDostSubtitle;
 
   /// No description provided for @voiceAssistantTitle.
   ///
   /// In en, this message translates to:
-  /// **'Voice Assistant'**
+  /// **'Ask Kisan Dost'**
   String get voiceAssistantTitle;
 
   /// No description provided for @voiceAssistantReady.
   ///
   /// In en, this message translates to:
-  /// **'Ready to listen'**
+  /// **'Listening...'**
   String get voiceAssistantReady;
 
   /// No description provided for @tapToSpeak.
   ///
   /// In en, this message translates to:
-  /// **'Tap the microphone to speak'**
+  /// **'What would you like to ask?'**
   String get tapToSpeak;
 
   /// No description provided for @listening.
@@ -295,6 +337,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Listening...'**
   String get listening;
+
+  /// No description provided for @bottomNavHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get bottomNavHome;
+
+  /// No description provided for @bottomNavWeather.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather'**
+  String get bottomNavWeather;
+
+  /// No description provided for @bottomNavAssistant.
+  ///
+  /// In en, this message translates to:
+  /// **'Assistant'**
+  String get bottomNavAssistant;
 
   /// No description provided for @cropWheat.
   ///

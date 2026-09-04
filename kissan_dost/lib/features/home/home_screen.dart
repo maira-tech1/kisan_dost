@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../app/router.dart';
 import '../../features/farmer/providers/farmer_provider.dart';
+import 'widgets/app_bottom_navigation.dart';
 import 'widgets/ask_kissan_dost_card.dart';
 import 'widgets/crop_card.dart';
 import 'widgets/farmer_header.dart';
@@ -21,24 +22,25 @@ class HomeScreen extends ConsumerWidget {
         slivers: [
           const SliverToBoxAdapter(child: FarmerHeader()),
           SliverPadding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
                 WeatherCard(
-                  temperature: 32,
+                  temperature: 24,
                   condition: 'Sunny',
                   humidity: 60,
-                  windSpeed: 12,
+                  windSpeed: 16,
+                  rainChance: 30,
                   location: location,
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 20),
                 CropCard(
                   onEdit: () => Navigator.pushNamed(
                     context,
                     AppRouter.cropSelection,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 20),
                 AskKissanDostCard(
                   onTap: () => Navigator.pushNamed(
                     context,
@@ -48,7 +50,13 @@ class HomeScreen extends ConsumerWidget {
               ]),
             ),
           ),
+          const SliverPadding(padding: EdgeInsets.only(bottom: 100)),
         ],
+      ),
+      bottomNavigationBar: AppBottomNavigation(
+        currentTab: HomeTab.home,
+        onWeather: () => Navigator.pushNamed(context, AppRouter.weather),
+        onAssistant: () => Navigator.pushNamed(context, AppRouter.voiceAssistant),
       ),
     );
   }
