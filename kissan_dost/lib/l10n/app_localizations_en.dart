@@ -123,13 +123,48 @@ class AppLocalizationsEn extends AppLocalizations {
   String get voiceAssistantTitle => 'Ask Kisan Dost';
 
   @override
-  String get voiceAssistantReady => 'Listening...';
+  String get voiceAssistantReady => 'Tap the microphone and speak';
 
   @override
   String get tapToSpeak => 'What would you like to ask?';
 
   @override
   String get listening => 'Listening...';
+
+  @override
+  String get transcribing => 'Transcribing...';
+
+  @override
+  String get modelDownloading => 'Downloading speech model...';
+
+  @override
+  String get modelDownloadFailed =>
+      'Failed to download the speech model. Please check your internet and try again.';
+
+  @override
+  String get micPermissionDenied =>
+      'Microphone permission is required to record your voice.';
+
+  @override
+  String get transcriptionFailed =>
+      'Could not transcribe your speech. Please try again.';
+
+  @override
+  String get noSpeechDetected => 'No speech was detected. Please try again.';
+
+  @override
+  String get sttServerUnreachable =>
+      'Cannot reach the Kisan Dost server. Check that it is running and on the same network.';
+
+  @override
+  String get sttTimeout =>
+      'The server took too long to respond. Please try again.';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get transcriptReadyTitle => 'Here is what we heard';
 
   @override
   String get bottomNavHome => 'Home';

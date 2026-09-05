@@ -323,7 +323,7 @@ abstract class AppLocalizations {
   /// No description provided for @voiceAssistantReady.
   ///
   /// In en, this message translates to:
-  /// **'Listening...'**
+  /// **'Tap the microphone and speak'**
   String get voiceAssistantReady;
 
   /// No description provided for @tapToSpeak.
@@ -337,6 +337,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Listening...'**
   String get listening;
+
+  /// No description provided for @transcribing.
+  ///
+  /// In en, this message translates to:
+  /// **'Transcribing...'**
+  String get transcribing;
+
+  /// No description provided for @modelDownloading.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading speech model...'**
+  String get modelDownloading;
+
+  /// No description provided for @modelDownloadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to download the speech model. Please check your internet and try again.'**
+  String get modelDownloadFailed;
+
+  /// No description provided for @micPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Microphone permission is required to record your voice.'**
+  String get micPermissionDenied;
+
+  /// No description provided for @transcriptionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not transcribe your speech. Please try again.'**
+  String get transcriptionFailed;
+
+  /// No description provided for @noSpeechDetected.
+  ///
+  /// In en, this message translates to:
+  /// **'No speech was detected. Please try again.'**
+  String get noSpeechDetected;
+
+  /// No description provided for @sttServerUnreachable.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot reach the Kisan Dost server. Check that it is running and on the same network.'**
+  String get sttServerUnreachable;
+
+  /// No description provided for @sttTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'The server took too long to respond. Please try again.'**
+  String get sttTimeout;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @transcriptReadyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Here is what we heard'**
+  String get transcriptReadyTitle;
 
   /// No description provided for @bottomNavHome.
   ///

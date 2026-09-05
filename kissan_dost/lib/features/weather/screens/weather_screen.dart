@@ -70,8 +70,7 @@ class WeatherScreen extends ConsumerWidget {
       bottomNavigationBar: AppBottomNavigation(
         currentTab: HomeTab.weather,
         onHome: () => Navigator.pushReplacementNamed(context, AppRouter.home),
-        onAssistant: () =>
-            Navigator.pushReplacementNamed(context, AppRouter.voiceAssistant),
+        onAssistant: () => Navigator.pushNamed(context, AppRouter.voiceAssistant),
       ),
     );
   }

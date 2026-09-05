@@ -123,13 +123,49 @@ class AppLocalizationsUr extends AppLocalizations {
   String get voiceAssistantTitle => 'کسان دوست سے پوچھیں';
 
   @override
-  String get voiceAssistantReady => 'سن رہا ہے...';
+  String get voiceAssistantReady => 'مائیکروفون دبائیں اور بولیں';
 
   @override
   String get tapToSpeak => 'آپ کیا پوچھنا چاہیں گے؟';
 
   @override
   String get listening => 'سن رہا ہے...';
+
+  @override
+  String get transcribing => 'تحریر کیا جا رہا ہے...';
+
+  @override
+  String get modelDownloading => 'اسپیچ ماڈل ڈاؤن لوڈ ہو رہا ہے...';
+
+  @override
+  String get modelDownloadFailed =>
+      'اسپیچ ماڈل ڈاؤن لوڈ کرنے میں ناکامی۔ براہ کرم اپنا انٹرنیٹ چیک کریں اور دوبارہ کوشش کریں۔';
+
+  @override
+  String get micPermissionDenied =>
+      'آواز ریکارڈ کرنے کے لیے مائیکروفون کی اجازت درکار ہے۔';
+
+  @override
+  String get transcriptionFailed =>
+      'آپ کی آواز تحریر نہیں کی جا سکی۔ براہ کرم دوبارہ کوشش کریں۔';
+
+  @override
+  String get noSpeechDetected =>
+      'کوئی آواز نہیں سنی گئی۔ براہ کرم دوبارہ کوشش کریں۔';
+
+  @override
+  String get sttServerUnreachable =>
+      'کسان دوست سرور سے رابطہ نہیں ہو سکا۔ براہ کرم یقینی بنائیں کہ سرور چل رہا ہے اور ایک ہی نیٹ ورک پر ہے۔';
+
+  @override
+  String get sttTimeout =>
+      'سرور نے جواب دینے میں بہت زیادہ وقت لیا۔ براہ کرم دوبارہ کوشش کریں۔';
+
+  @override
+  String get retry => 'دوبارہ کوشش کریں';
+
+  @override
+  String get transcriptReadyTitle => 'یہ ہے جو ہم نے سنا';
 
   @override
   String get bottomNavHome => 'ہوم';

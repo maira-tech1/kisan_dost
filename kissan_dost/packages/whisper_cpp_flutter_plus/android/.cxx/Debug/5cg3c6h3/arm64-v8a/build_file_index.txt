@@ -1,0 +1,11 @@
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/CMakeLists.txt
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/CMakeLists.txt
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/cmake/build-info.cmake
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/cmake/parakeet-config.cmake.in
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/cmake/whisper-config.cmake.in
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/CMakeLists.txt
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/cmake/common.cmake
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/cmake/ggml-config.cmake.in
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/src/CMakeLists.txt
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/src/ggml-cpu/CMakeLists.txt
+/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/src/CMakeLists.txt

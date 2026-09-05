@@ -1,0 +1,103 @@
+{
+  "buildFiles": [
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/CMakeLists.txt",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/CMakeLists.txt",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/cmake/build-info.cmake",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/cmake/parakeet-config.cmake.in",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/cmake/whisper-config.cmake.in",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/CMakeLists.txt",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/cmake/common.cmake",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/cmake/ggml-config.cmake.in",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/src/CMakeLists.txt",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/src/ggml-cpu/CMakeLists.txt",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/src/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/amnamumtaz/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/amnamumtaz/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "ggml::@fe13e92dabd0655ddef2": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ggml",
+      "output": "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml.so",
+      "runtimeFiles": [
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-cpu.so",
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-base.so"
+      ]
+    },
+    "ggml-base::@fe13e92dabd0655ddef2": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ggml-base",
+      "output": "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-base.so",
+      "runtimeFiles": []
+    },
+    "ggml-cpu::@fe13e92dabd0655ddef2": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ggml-cpu",
+      "output": "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-cpu.so",
+      "runtimeFiles": [
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-base.so"
+      ]
+    },
+    "parakeet::@5c4c08eb26cb9fe5feee": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "parakeet",
+      "output": "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libparakeet.so",
+      "runtimeFiles": [
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml.so",
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-cpu.so",
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-base.so"
+      ]
+    },
+    "whisper::@5c4c08eb26cb9fe5feee": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "whisper",
+      "output": "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libwhisper.so",
+      "runtimeFiles": [
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml.so",
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-cpu.so",
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-base.so"
+      ]
+    },
+    "whisper_flutter::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "whisper_flutter",
+      "output": "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/build/whisper_cpp_flutter_plus/intermediates/cxx/Debug/5cg3c6h3/obj/armeabi-v7a/libwhisper_flutter.so",
+      "runtimeFiles": [
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libwhisper.so",
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml.so",
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-cpu.so",
+        "/Users/amnamumtaz/Desktop/kisan_dost/kissan_dost/packages/whisper_cpp_flutter_plus/android/.cxx/Debug/5cg3c6h3/armeabi-v7a/bin/libggml-base.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/amnamumtaz/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/amnamumtaz/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

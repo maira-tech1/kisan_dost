@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "whisper-build/ggml/src/ggml-cpu",
+		"source" : "ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/ggml/src/ggml-cpu"
+	}
+}

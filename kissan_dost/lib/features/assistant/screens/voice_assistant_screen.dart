@@ -1,44 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../app/router.dart';
 import '../../../app/theme/app_colors.dart';
 import '../../../app/theme/app_text_styles.dart';
+import '../../../core/providers/locale_provider.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../home/widgets/app_bottom_navigation.dart';
+import '../models/voice_state.dart';
+import '../providers/assistant_provider.dart';
+import '../widgets/mic_button.dart';
+import '../widgets/transcript_view.dart';
+import '../widgets/voice_status_label.dart';
 
-class VoiceAssistantScreen extends StatefulWidget {
+class VoiceAssistantScreen extends ConsumerStatefulWidget {
   const VoiceAssistantScreen({super.key});
 
   @override
-  State<VoiceAssistantScreen> createState() => _VoiceAssistantScreenState();
+  ConsumerState<VoiceAssistantScreen> createState() =>
+      _VoiceAssistantScreenState();
 }
 
-class _VoiceAssistantScreenState extends State<VoiceAssistantScreen>
-    with SingleTickerProviderStateMixin {
-  bool _isListening = false;
-  late AnimationController _pulseController;
+class _VoiceAssistantScreenState extends ConsumerState<VoiceAssistantScreen> {
+  void _onMicTap(String language) {
+    final state = ref.read(assistantProvider);
+    final notifier = ref.read(assistantProvider.notifier);
 
-  @override
-  void initState() {
-    super.initState();
-    _pulseController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1200),
-    )..repeat();
-  }
-
-  @override
-  void dispose() {
-    _pulseController.dispose();
-    super.dispose();
-  }
-
-  void _toggleListening() {
-    setState(() => _isListening = !_isListening);
+    if (state.isListening) {
+      notifier.stopListening(language);
+    } else if (state.isReady || state.hasError || state.hasTranscript) {
+      notifier.startListening();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final state = ref.watch(assistantProvider);
+    final locale = ref.watch(localeProvider);
+    final language = locale.languageCode;
 
     return Scaffold(
       appBar: AppBar(
@@ -54,22 +54,14 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen>
           child: Column(
             children: [
               const Spacer(),
-              Text(
-                _isListening ? l10n.listening : l10n.voiceAssistantReady,
-                style: AppTextStyles.headline,
-                textAlign: TextAlign.center,
-              ),
+              VoiceStatusLabel(state: state, l10n: l10n),
               const SizedBox(height: 12),
-              Text(
-                l10n.tapToSpeak,
-                style: AppTextStyles.bodySecondary,
-                textAlign: TextAlign.center,
-              ),
+              _buildContent(context, state, l10n),
               const Spacer(),
-              _MicButton(
-                isListening: _isListening,
-                onTap: _toggleListening,
-                pulseController: _pulseController,
+              MicButton(
+                isListening: state.isListening,
+                isLoading: state.isTranscribing || state.isDownloadingModel,
+                onTap: () => _onMicTap(language),
               ),
               const Spacer(),
               SizedBox(
@@ -103,55 +95,66 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen>
       ),
     );
   }
-}
 
-class _MicButton extends StatelessWidget {
-  const _MicButton({
-    required this.isListening,
-    required this.onTap,
-    required this.pulseController,
-  });
-
-  final bool isListening;
-  final VoidCallback onTap;
-  final AnimationController pulseController;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedBuilder(
-        animation: pulseController,
-        builder: (context, child) {
-          final scale = isListening ? 1 + pulseController.value * 0.08 : 1.0;
-          return Transform.scale(
-            scale: scale,
-            child: Container(
-              width: 160,
-              height: 160,
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.primary.withValues(
-                      alpha: isListening ? 0.5 : 0.3,
-                    ),
-                    blurRadius: isListening ? 40 : 24,
-                    spreadRadius: isListening ? 8 : 4,
-                  ),
-                ],
-              ),
-              child: child,
+  Widget _buildContent(
+    BuildContext context,
+    VoiceState state,
+    AppLocalizations l10n,
+  ) {
+    if (state.isDownloadingModel) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: LinearProgressIndicator(
+              value: state.downloadProgress > 0 ? state.downloadProgress : null,
+              minHeight: 8,
             ),
-          );
-        },
-        child: const Icon(
-          Icons.mic,
-          size: 64,
-          color: AppColors.textOnPrimary,
-        ),
-      ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            '${(state.downloadProgress * 100).toStringAsFixed(0)}%',
+            style: AppTextStyles.bodySecondary,
+          ),
+        ],
+      );
+    }
+
+    if (state.hasError) {
+      return Text(
+        _errorMessage(state.errorKey, l10n),
+        style: AppTextStyles.bodySecondary.copyWith(color: AppColors.error),
+        textAlign: TextAlign.center,
+      );
+    }
+
+    if (state.hasTranscript && state.transcript != null) {
+      return TranscriptView(text: state.transcript!);
+    }
+
+    return Text(
+      l10n.tapToSpeak,
+      style: AppTextStyles.bodySecondary,
+      textAlign: TextAlign.center,
     );
+  }
+
+  String _errorMessage(String errorKey, AppLocalizations l10n) {
+    switch (errorKey) {
+      case 'micPermissionDenied':
+        return l10n.micPermissionDenied;
+      case 'modelDownloadFailed':
+        return l10n.modelDownloadFailed;
+      case 'noSpeechDetected':
+        return l10n.noSpeechDetected;
+      case 'sttServerUnreachable':
+        return l10n.sttServerUnreachable;
+      case 'sttTimeout':
+        return l10n.sttTimeout;
+      case 'transcriptionFailed':
+      default:
+        return l10n.transcriptionFailed;
+    }
   }
 }

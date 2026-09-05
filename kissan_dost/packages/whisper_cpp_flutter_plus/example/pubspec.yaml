@@ -1,0 +1,34 @@
+# Maintained by Gurwinder Singh — https://gurwinderdevx.com/
+name: whisper_cpp_flutter_plus_example
+description: Example application demonstrating offline and live whisper.cpp transcription with whisper_cpp_flutter_plus.
+publish_to: 'none'
+version: 1.0.0+1
+homepage: https://gurwinderdevx.com/
+repository: https://github.com/47gurvinder/whisper_cpp_flutter
+funding:
+  - https://buymeacoffee.com/gurwinderdevx
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.19.0'
+
+dependencies:
+  audioplayers: 6.4.0
+  crypto: ^3.0.6
+  cupertino_icons: ^1.0.8
+  flutter:
+    sdk: flutter
+  whisper_cpp_flutter_plus:
+    path: ../
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  config:
+    enable-swift-package-manager: true
+  uses-material-design: true
+  assets:
+    - assets/benchmark/jfk.wav

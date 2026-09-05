@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "whisper-build/src",
+		"source" : "ios/whisper_cpp_flutter_plus/Sources/WhisperCppCore/src"
+	}
+}
